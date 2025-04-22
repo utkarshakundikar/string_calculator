@@ -1,0 +1,84 @@
+String Calculator
+
+A simple string calculator that calculates the sum of comma-separated numbers using a web-based interface built with React for the frontend and Flask for the backend.
+
+Table of Contents:
+- Installation
+- Features
+- How It Works
+- Code Structure
+- Extra Functionality
+- Technologies Used
+- Contributing
+- License
+
+Installation:
+
+Follow these steps to get your development environment set up:
+
+Frontend Setup (React):
+1. Clone the repository:
+   git clone https://github.com/utkarshakundikar/string_calculator.git
+2. Navigate to the frontend directory:
+   cd frontend
+3. Install dependencies:
+   npm install
+4. Start the React development server:
+   npm start
+
+Backend Setup (Flask):
+1. Navigate to the backend directory:
+   cd backend
+2. Install dependencies (using a virtual environment is recommended):
+   pip install -r requirements.txt
+3. Start the Flask backend server:
+   python app.py
+
+View the Application:
+- Visit http://localhost:3000 in your browser for the frontend.
+- The backend will be running at http://localhost:5000.
+
+Features:
+- Input Validation: Ensures that the input consists of a valid string of comma-separated numbers.
+- Dynamic Calculation: Submits the input to the backend to calculate the sum.
+- Responsive Design: The interface adapts to different screen sizes.
+
+How It Works:
+
+Frontend (React):
+- A form is displayed where users can input a comma-separated list of numbers.
+- On submitting the form, the data is sent via a POST request to the Flask backend.
+- The frontend uses a styled input field and provides a user-friendly error message if the input is invalid.
+
+Backend (Flask):
+- The Flask app receives the input string and processes it by splitting the string at commas, converting each part to a number, and calculating the sum.
+- If the input is invalid, the backend sends an error response, which is displayed on the frontend.
+
+Code Structure:
+
+Frontend (React):
+- App.js: Main React component that renders the form and displays the result or error.
+- CalculatorForm.js: Contains the logic for handling user input, making the API request, and displaying errors.
+- CalculatorForm.css: Styles the form and provides a tooltip for input information.
+
+Backend (Flask):
+- app.py: Contains the Flask routes, including the /api/add route to handle POST requests and calculate the sum.
+- requirements.txt: Lists the Python dependencies for the backend.
+
+Extra Functionality:
+
+Error Handling:
+- The app handles errors both on the frontend and backend, providing appropriate messages to users if the input is incorrect.
+- If the input is empty or not a valid comma-separated list, the app displays error messages.
+
+Tooltip for Input Information:
+- An info icon inside the input field provides users with guidance on how to format the input (comma-separated numbers).
+
+Responsive Design:
+- The design of the app adjusts dynamically based on the screen size for a better user experience on mobile and desktop devices.
+
+Technologies Used:
+- Frontend: React, JavaScript, CSS
+- Backend: Flask (Python)
+- API Communication: Fetch API (POST request)
+- Styling: Custom CSS and Font Awesome for icons
