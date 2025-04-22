@@ -1,0 +1,120 @@
+/* General Layout */
+
+/* Reset margin and padding for html and body */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+  /* Disable scrolling */
+}
+
+/* General Layout */
+.App {
+  font-family: 'Arial', sans-serif;
+  background-color: #f0f0f0;
+  padding: 40px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  /* Take full height of the viewport */
+  overflow: hidden;
+  /* Ensure no scrollbar appears */
+}
+
+h1 {
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.rainbow-text {
+  font-size: 3rem;
+  font-weight: bold;
+  background: linear-gradient(270deg,
+      #ff0000,
+      #ff9900,
+      #33cc33,
+      #3399ff,
+      #9900cc,
+      #ff3399,
+      #ff0000);
+  background-size: 400% 400%;
+
+  /* Standard and vendor-prefixed background-clip for text */
+  -webkit-background-clip: text;
+  background-clip: text;
+
+  /* Standard and vendor-prefixed text fill */
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+
+  animation: rainbow 5s ease infinite;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+
+.container {
+  background-color: white;
+  padding: 40px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+}
+
+
+/* Styling for input fields */
+input {
+  padding: 12px;
+  font-size: 1.2em;
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+}
+
+input:focus {
+  border-color: #4CAF50;
+  outline: none;
+}
+
+/* Button Styling */
+button {
+  padding: 12px 20px;
+  font-size: 1.1em;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #4CAF50;
+  color: white;
+  transition: background-color 0.3s ease;
+  width: 100%;
+}
+
+button:hover {
+  background-color: #45a049;
+}
+
+button:focus {
+  outline: none;
+}
+
+/* Result Section Styling */
+.result-container {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+.error {
+  color: red;
+}
+
+.result {
+  color: green;
+  font-weight: bold;
+}

@@ -1,0 +1,19 @@
+/* ResultDisplay.css */
+
+.result-container {
+    margin-top: 20px;
+    font-size: 1.2em;
+    padding: 15px;
+    background-color: #f7f7f7;
+    border-radius: 5px;
+}
+
+.error {
+    color: red;
+}
+
+.result {
+    color: green;
+    font-weight: bold;
+    font-size: 1.3em;
+}
