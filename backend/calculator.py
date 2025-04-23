@@ -4,16 +4,26 @@ def add(numbers):
     if not numbers:
         return 0
 
+    # Default delimiter allows comma or newline
     delimiter = ",|\n"
+
+    # Check for custom delimiter syntax
     if numbers.startswith("//"):
         delimiter_line, numbers = numbers.split("\n", 1)
-        delimiter = re.escape(delimiter_line[2:])
+        # Support custom delimiter like //;\n1;2
+        custom_delim = delimiter_line[2:]
+        delimiter = re.escape(custom_delim)  # Escape to handle special characters
 
+    # Split numbers using the determined delimiter(s)
     parts = re.split(delimiter, numbers)
-    nums = [int(num) for num in parts if num]
-    negatives = [str(num) for num in nums if num < 0]
 
+    # Convert to integers
+    nums = [int(num) for num in parts if num]
+
+    # Check for negative numbers
+    negatives = [str(num) for num in nums if num < 0]
     if negatives:
         raise ValueError("negative numbers not allowed " + ",".join(negatives))
 
+    # Return the sum
     return sum(nums)

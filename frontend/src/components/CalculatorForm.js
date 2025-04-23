@@ -1,5 +1,3 @@
-// export default CalculatorForm;
-
 import React, { useState } from 'react';
 import './CalculatorForm.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,32 +12,35 @@ function CalculatorForm({ setResult, setError }) {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-
+  
     if (!input) {
       setError('Please enter a valid string');
       setResult(null);
       return;
     }
-
-    // Regular expression to validate comma-separated numbers (allowing negative numbers)
-    const isValid = /^-?\d+(,\s*-?\d+)*$/.test(input.trim());
-    
+  
+    // Allow custom delimiter syntax or numbers separated by commas/newlines
+    const isValid = input.startsWith("//") || /^[-\d\s,\\n]+$/.test(input.trim());
+  
     if (!isValid) {
-      setError('Please check the input value. Only comma-separated numbers are allowed.');
+      setError('Please check the input value. Only numbers separated by commas, newlines, or a valid custom delimiter are allowed.');
       setResult(null);
       return;
     }
-
+  
+    // Normalize \n to actual newline for processing
+    const normalizedInput = input.replace(/\\n/g, '\n'); // Replace \n with actual newline
+  
     fetch('http://localhost:5000/api/add', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ input: input }),
+      body: JSON.stringify({ input: normalizedInput }),
     })
       .then((response) => response.json())
       .then((data) => {
-        if (data.result) {
+        if (data.result !== undefined) {
           setResult(data.result);
           setError('');
         } else {
@@ -51,6 +52,7 @@ function CalculatorForm({ setResult, setError }) {
         setResult(null);
       });
   };
+  
 
   return (
     <form className="calculator-form" onSubmit={handleSubmit}>
@@ -59,12 +61,12 @@ function CalculatorForm({ setResult, setError }) {
           type="text"
           value={input}
           onChange={handleChange}
-          placeholder="Enter a comma-separated list of numbers"
+          placeholder="Enter numbers (e.g. 1,2,3 or //;\n1;2)"
           className="input_container"
         />
         <FontAwesomeIcon icon={faCircleInfo} className="info-icon" />
         <span className="tooltiptext">
-          Input must be a comma-separated list of numbers (e.g., 1,2,3)
+          Use comma, newline or custom delimiter (e.g. //;\n1;2) to separate numbers.
         </span>
       </div>
       <button type="submit">Calculate</button>
@@ -73,4 +75,3 @@ function CalculatorForm({ setResult, setError }) {
 }
 
 export default CalculatorForm;
-

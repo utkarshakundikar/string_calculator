@@ -33,9 +33,14 @@ def add():
     negatives = []
 
     for part in parts:
-        if part.strip() == '':
+        part = part.strip()
+        if not part:
             continue
-        num = int(part.strip())
+        try:
+            num = int(part)
+        except ValueError:
+            return jsonify({'error': 'Please check the input value. Only comma/newline-separated numbers are allowed.'}), 400
+
         if num < 0:
             negatives.append(num)
         result += num
