@@ -13,7 +13,6 @@ def add():
     if input_string == '':
         return jsonify({'result': 0})
 
-    # Example logic to handle numbers
     import re
     import json
 
