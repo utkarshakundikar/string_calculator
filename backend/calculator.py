@@ -7,14 +7,13 @@ def add(numbers):
     # Default delimiter allows comma or newline
     delimiter = ",|\n"
 
-    # Check for custom delimiter syntax
+    # custom delimiter syntax
     if numbers.startswith("//"):
         delimiter_line, numbers = numbers.split("\n", 1)
-        # Support custom delimiter like //;\n1;2
         custom_delim = delimiter_line[2:]
-        delimiter = re.escape(custom_delim)  # Escape to handle special characters
+        delimiter = re.escape(custom_delim) 
 
-    # Split numbers using the determined delimiter(s)
+    # Split numbers 
     parts = re.split(delimiter, numbers)
 
     # Convert to integers

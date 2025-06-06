@@ -45,6 +45,7 @@ function CalculatorForm({ setResult, setError }) {
           setError('');
         } else {
           setError(data.error || 'Something went wrong!');
+          setResult(null);  // Clear result if error received
         }
       })
       .catch(() => {
